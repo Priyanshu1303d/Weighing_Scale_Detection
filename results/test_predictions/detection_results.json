@@ -1,0 +1,629 @@
+{
+  "timestamp": "2026-01-31 19:31:02",
+  "model": "models/scale_detection_v1/weights/best.pt",
+  "confidence_threshold": 0.25,
+  "total_images": 32,
+  "total_detections": 36,
+  "results": [
+    {
+      "filename": "110_jpeg.rf.092da2d1ffddfad38995e4a68b8868da.jpg",
+      "image_path": "data\\labeled\\test\\images\\110_jpeg.rf.092da2d1ffddfad38995e4a68b8868da.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            198.8537139892578,
+            392.9983215332031,
+            319.69976806640625,
+            436.8409729003906
+          ],
+          "confidence": 0.8511102199554443,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "110_jpeg.rf.092da2d1ffddfad38995e4a68b8868da.jpg",
+      "image_path": "data\\labeled\\test\\images\\110_jpeg.rf.092da2d1ffddfad38995e4a68b8868da.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            198.8537139892578,
+            392.9983215332031,
+            319.69976806640625,
+            436.8409729003906
+          ],
+          "confidence": 0.8511102199554443,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "113_jpeg.rf.01dddfc997d46866d333ae8b6c803eed.jpg",
+      "image_path": "data\\labeled\\test\\images\\113_jpeg.rf.01dddfc997d46866d333ae8b6c803eed.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            297.0047912597656,
+            334.5225830078125,
+            428.3789367675781,
+            390.42572021484375
+          ],
+          "confidence": 0.8140609860420227,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "113_jpeg.rf.01dddfc997d46866d333ae8b6c803eed.jpg",
+      "image_path": "data\\labeled\\test\\images\\113_jpeg.rf.01dddfc997d46866d333ae8b6c803eed.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            297.0047912597656,
+            334.5225830078125,
+            428.3789367675781,
+            390.42572021484375
+          ],
+          "confidence": 0.8140609860420227,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "12_jpeg.rf.3066208cf2f15ec6ab94734e75779fcf.jpg",
+      "image_path": "data\\labeled\\test\\images\\12_jpeg.rf.3066208cf2f15ec6ab94734e75779fcf.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            139.47177124023438,
+            247.50938415527344,
+            387.4112854003906,
+            336.7354736328125
+          ],
+          "confidence": 0.9125584959983826,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "12_jpeg.rf.3066208cf2f15ec6ab94734e75779fcf.jpg",
+      "image_path": "data\\labeled\\test\\images\\12_jpeg.rf.3066208cf2f15ec6ab94734e75779fcf.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            139.47177124023438,
+            247.50938415527344,
+            387.4112854003906,
+            336.7354736328125
+          ],
+          "confidence": 0.9125584959983826,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "155_jpeg.rf.016f411577442f74391f66139bd94745.jpg",
+      "image_path": "data\\labeled\\test\\images\\155_jpeg.rf.016f411577442f74391f66139bd94745.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            211.2578582763672,
+            291.9591064453125,
+            386.52911376953125,
+            352.4642333984375
+          ],
+          "confidence": 0.7448301911354065,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "155_jpeg.rf.016f411577442f74391f66139bd94745.jpg",
+      "image_path": "data\\labeled\\test\\images\\155_jpeg.rf.016f411577442f74391f66139bd94745.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            211.2578582763672,
+            291.9591064453125,
+            386.52911376953125,
+            352.4642333984375
+          ],
+          "confidence": 0.7448301911354065,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "15_jpeg.rf.5bbd316795bc0225af56adc6a035d004.jpg",
+      "image_path": "data\\labeled\\test\\images\\15_jpeg.rf.5bbd316795bc0225af56adc6a035d004.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            213.01190185546875,
+            256.590576171875,
+            341.05621337890625,
+            304.565185546875
+          ],
+          "confidence": 0.8709483742713928,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "15_jpeg.rf.5bbd316795bc0225af56adc6a035d004.jpg",
+      "image_path": "data\\labeled\\test\\images\\15_jpeg.rf.5bbd316795bc0225af56adc6a035d004.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            213.01190185546875,
+            256.590576171875,
+            341.05621337890625,
+            304.565185546875
+          ],
+          "confidence": 0.8709483742713928,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "20_jpeg.rf.011b6ca900ba16c2b5dcaa66168d8bb5.jpg",
+      "image_path": "data\\labeled\\test\\images\\20_jpeg.rf.011b6ca900ba16c2b5dcaa66168d8bb5.jpg",
+      "num_detections": 3,
+      "detections": [
+        {
+          "bbox": [
+            250.72442626953125,
+            242.71563720703125,
+            318.3038330078125,
+            256.453125
+          ],
+          "confidence": 0.760307252407074,
+          "class_id": 0,
+          "class_name": "scale_display"
+        },
+        {
+          "bbox": [
+            330.53594970703125,
+            241.7694549560547,
+            392.451416015625,
+            254.02110290527344
+          ],
+          "confidence": 0.49390703439712524,
+          "class_id": 0,
+          "class_name": "scale_display"
+        },
+        {
+          "bbox": [
+            405.016357421875,
+            240.52813720703125,
+            464.780029296875,
+            253.29046630859375
+          ],
+          "confidence": 0.4315202236175537,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "20_jpeg.rf.011b6ca900ba16c2b5dcaa66168d8bb5.jpg",
+      "image_path": "data\\labeled\\test\\images\\20_jpeg.rf.011b6ca900ba16c2b5dcaa66168d8bb5.jpg",
+      "num_detections": 3,
+      "detections": [
+        {
+          "bbox": [
+            250.72442626953125,
+            242.71563720703125,
+            318.3038330078125,
+            256.453125
+          ],
+          "confidence": 0.760307252407074,
+          "class_id": 0,
+          "class_name": "scale_display"
+        },
+        {
+          "bbox": [
+            330.53594970703125,
+            241.7694549560547,
+            392.451416015625,
+            254.02110290527344
+          ],
+          "confidence": 0.49390703439712524,
+          "class_id": 0,
+          "class_name": "scale_display"
+        },
+        {
+          "bbox": [
+            405.016357421875,
+            240.52813720703125,
+            464.780029296875,
+            253.29046630859375
+          ],
+          "confidence": 0.4315202236175537,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "30_jpeg.rf.48a45c04614bdd57b20ebcafaf81e569.jpg",
+      "image_path": "data\\labeled\\test\\images\\30_jpeg.rf.48a45c04614bdd57b20ebcafaf81e569.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            229.1930694580078,
+            303.08343505859375,
+            396.74859619140625,
+            370.43963623046875
+          ],
+          "confidence": 0.8122199177742004,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "30_jpeg.rf.48a45c04614bdd57b20ebcafaf81e569.jpg",
+      "image_path": "data\\labeled\\test\\images\\30_jpeg.rf.48a45c04614bdd57b20ebcafaf81e569.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            229.1930694580078,
+            303.08343505859375,
+            396.74859619140625,
+            370.43963623046875
+          ],
+          "confidence": 0.8122199177742004,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "40_jpeg.rf.5b42467d8d704a9cf768f37b697ea6d2.jpg",
+      "image_path": "data\\labeled\\test\\images\\40_jpeg.rf.5b42467d8d704a9cf768f37b697ea6d2.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            270.4478454589844,
+            348.37823486328125,
+            343.6006164550781,
+            366.52606201171875
+          ],
+          "confidence": 0.8873672485351562,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "40_jpeg.rf.5b42467d8d704a9cf768f37b697ea6d2.jpg",
+      "image_path": "data\\labeled\\test\\images\\40_jpeg.rf.5b42467d8d704a9cf768f37b697ea6d2.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            270.4478454589844,
+            348.37823486328125,
+            343.6006164550781,
+            366.52606201171875
+          ],
+          "confidence": 0.8873672485351562,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "42_jpeg.rf.5358935e4135bd3f771b7affa638f725.jpg",
+      "image_path": "data\\labeled\\test\\images\\42_jpeg.rf.5358935e4135bd3f771b7affa638f725.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            245.47091674804688,
+            371.4915466308594,
+            312.9984436035156,
+            384.3922424316406
+          ],
+          "confidence": 0.81859290599823,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "42_jpeg.rf.5358935e4135bd3f771b7affa638f725.jpg",
+      "image_path": "data\\labeled\\test\\images\\42_jpeg.rf.5358935e4135bd3f771b7affa638f725.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            245.47091674804688,
+            371.4915466308594,
+            312.9984436035156,
+            384.3922424316406
+          ],
+          "confidence": 0.81859290599823,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "4_jpeg.rf.4c1d73b00c14a8c56183ecb3633bd0f5.jpg",
+      "image_path": "data\\labeled\\test\\images\\4_jpeg.rf.4c1d73b00c14a8c56183ecb3633bd0f5.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            68.9161376953125,
+            92.09809112548828,
+            463.77850341796875,
+            271.5826416015625
+          ],
+          "confidence": 0.8720759153366089,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "4_jpeg.rf.4c1d73b00c14a8c56183ecb3633bd0f5.jpg",
+      "image_path": "data\\labeled\\test\\images\\4_jpeg.rf.4c1d73b00c14a8c56183ecb3633bd0f5.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            68.9161376953125,
+            92.09809112548828,
+            463.77850341796875,
+            271.5826416015625
+          ],
+          "confidence": 0.8720759153366089,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "54_jpeg.rf.5b31ec1601e697d9b0edad95c3269fe6.jpg",
+      "image_path": "data\\labeled\\test\\images\\54_jpeg.rf.5b31ec1601e697d9b0edad95c3269fe6.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            392.40399169921875,
+            333.6575927734375,
+            504.10394287109375,
+            380.814208984375
+          ],
+          "confidence": 0.8365932703018188,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "54_jpeg.rf.5b31ec1601e697d9b0edad95c3269fe6.jpg",
+      "image_path": "data\\labeled\\test\\images\\54_jpeg.rf.5b31ec1601e697d9b0edad95c3269fe6.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            392.40399169921875,
+            333.6575927734375,
+            504.10394287109375,
+            380.814208984375
+          ],
+          "confidence": 0.8365932703018188,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "55_jpeg.rf.d8a28191ab6108c2abf48ef15be8acfd.jpg",
+      "image_path": "data\\labeled\\test\\images\\55_jpeg.rf.d8a28191ab6108c2abf48ef15be8acfd.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            89.7059326171875,
+            307.77288818359375,
+            293.04107666015625,
+            367.93768310546875
+          ],
+          "confidence": 0.7604289650917053,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "55_jpeg.rf.d8a28191ab6108c2abf48ef15be8acfd.jpg",
+      "image_path": "data\\labeled\\test\\images\\55_jpeg.rf.d8a28191ab6108c2abf48ef15be8acfd.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            89.7059326171875,
+            307.77288818359375,
+            293.04107666015625,
+            367.93768310546875
+          ],
+          "confidence": 0.7604289650917053,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "58_jpeg.rf.857f365b511dc57e2bb244167cb8e662.jpg",
+      "image_path": "data\\labeled\\test\\images\\58_jpeg.rf.857f365b511dc57e2bb244167cb8e662.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            266.20501708984375,
+            155.5911865234375,
+            451.72552490234375,
+            224.857177734375
+          ],
+          "confidence": 0.7703266143798828,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "58_jpeg.rf.857f365b511dc57e2bb244167cb8e662.jpg",
+      "image_path": "data\\labeled\\test\\images\\58_jpeg.rf.857f365b511dc57e2bb244167cb8e662.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            266.20501708984375,
+            155.5911865234375,
+            451.72552490234375,
+            224.857177734375
+          ],
+          "confidence": 0.7703266143798828,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "60_jpeg.rf.c6999a3fff1175b81c85f4617d68c577.jpg",
+      "image_path": "data\\labeled\\test\\images\\60_jpeg.rf.c6999a3fff1175b81c85f4617d68c577.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            252.161865234375,
+            301.84771728515625,
+            407.4886474609375,
+            374.93695068359375
+          ],
+          "confidence": 0.7871918082237244,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "60_jpeg.rf.c6999a3fff1175b81c85f4617d68c577.jpg",
+      "image_path": "data\\labeled\\test\\images\\60_jpeg.rf.c6999a3fff1175b81c85f4617d68c577.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            252.161865234375,
+            301.84771728515625,
+            407.4886474609375,
+            374.93695068359375
+          ],
+          "confidence": 0.7871918082237244,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "81_jpeg.rf.4ed5310dc0b1a6c5a350194f9b84738b.jpg",
+      "image_path": "data\\labeled\\test\\images\\81_jpeg.rf.4ed5310dc0b1a6c5a350194f9b84738b.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            362.5919189453125,
+            167.64356994628906,
+            437.1993408203125,
+            202.89576721191406
+          ],
+          "confidence": 0.8776667714118958,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "81_jpeg.rf.4ed5310dc0b1a6c5a350194f9b84738b.jpg",
+      "image_path": "data\\labeled\\test\\images\\81_jpeg.rf.4ed5310dc0b1a6c5a350194f9b84738b.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            362.5919189453125,
+            167.64356994628906,
+            437.1993408203125,
+            202.89576721191406
+          ],
+          "confidence": 0.8776667714118958,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "96_jpeg.rf.dd42b34417869acd919599daf07f0ac7.jpg",
+      "image_path": "data\\labeled\\test\\images\\96_jpeg.rf.dd42b34417869acd919599daf07f0ac7.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            138.2786865234375,
+            231.97035217285156,
+            364.17889404296875,
+            310.6287841796875
+          ],
+          "confidence": 0.849240243434906,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    },
+    {
+      "filename": "96_jpeg.rf.dd42b34417869acd919599daf07f0ac7.jpg",
+      "image_path": "data\\labeled\\test\\images\\96_jpeg.rf.dd42b34417869acd919599daf07f0ac7.jpg",
+      "num_detections": 1,
+      "detections": [
+        {
+          "bbox": [
+            138.2786865234375,
+            231.97035217285156,
+            364.17889404296875,
+            310.6287841796875
+          ],
+          "confidence": 0.849240243434906,
+          "class_id": 0,
+          "class_name": "scale_display"
+        }
+      ]
+    }
+  ]
+}

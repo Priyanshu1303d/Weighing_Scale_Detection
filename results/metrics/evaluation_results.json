@@ -1,0 +1,17 @@
+{
+  "evaluation_date": "2026-01-31 19:29:10",
+  "model_path": "models/scale_detection_v1/weights/best.pt",
+  "dataset": "data/labeled/data.yaml",
+  "metrics": {
+    "mAP50": 0.995,
+    "mAP50-95": 0.7978479047619047,
+    "precision": 0.9917387222117118,
+    "recall": 1.0,
+    "f1_score": 0.9958517281670151
+  },
+  "performance": {
+    "inference_speed_ms": 10.817118749855581,
+    "preprocess_speed_ms": 3.5488062499098305,
+    "postprocess_speed_ms": 1.267837500108726
+  }
+}

@@ -205,3 +205,49 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Model weights (too large for git)
+models/*.pt
+models/*.pth
+!models/.gitkeep
+
+# Data (upload separately or use DVC)
+data/raw/*
+data/labeled/*
+!data/**/.gitkeep
+
+# Results
+results/predictions/*
+results/visualizations/*
+!results/**/.gitkeep
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+yolov8n.pt

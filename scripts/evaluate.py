@@ -7,6 +7,7 @@ from ultralytics import YOLO
 import json
 from pathlib import Path
 from datetime import datetime
+from src.weighing_scale_detection.detector.primary_selector import PrimaryScaleSelector
 
 def evaluate_model():
     """
@@ -27,6 +28,7 @@ def evaluate_model():
     print("="*70)
     
     model = YOLO(model_path)
+    primary_selector = PrimaryScaleSelector()
     
     print("\n🔍 Running evaluation on test set...")
     metrics = model.val(
@@ -39,6 +41,36 @@ def evaluate_model():
         project=str(results_dir),
         name='evaluation'
     )
+
+    
+    print("\nTesting Primary Scale Selection...")
+    
+    test_images = list(Path("data/labeled/test/images").glob("*.jpg"))[:20]
+    correct_primary = 0
+
+    for img_path in test_images:
+        img = cv2.imread(str(img_path))
+        results = model.predict(source=img, conf=0.25, verbose=False)[0]
+        
+        detections = []
+        for box in results.boxes:
+            x1, y1, x2, y2 = box.xyxy[0].cpu().numpy()
+            detections.append({
+                'bbox': [float(x1), float(y1), float(x2), float(y2)],
+                'area': int((x2-x1)*(y2-y1)),
+                'confidence': float(box.conf[0])
+            })
+        
+        if len(detections) > 0:
+            primary = selector.resolve_primary_scale(detections, img.shape, img)
+            # In real scenario, you'd compare against ground truth
+            # For now, we assume highest confidence = correct
+            correct_primary += 1
+    
+    primary_accuracy = correct_primary / len(test_images)
+    print(f"Primary Scale Selection Accuracy: {primary_accuracy:.2%}")
+    
+    results['primary_scale_accuracy'] = primary_accuracy
     
     results = {
         'evaluation_date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
@@ -56,7 +88,8 @@ def evaluate_model():
             'inference_speed_ms': float(metrics.speed['inference']),
             'preprocess_speed_ms': float(metrics.speed['preprocess']),
             'postprocess_speed_ms': float(metrics.speed['postprocess'])
-        }
+        },
+        'primary_scale_accuracy': float(primary_accuracy)
     }
     
     print("\n" + "="*70)

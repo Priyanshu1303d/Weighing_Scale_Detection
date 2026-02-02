@@ -10,6 +10,8 @@ import numpy as np
 from ultralytics import YOLO
 from pathlib import Path
 from typing import List, Dict, Union, Tuple, Optional
+from PIL import Image
+from weighing_scale_detection.detector.primary_selector import PrimaryScaleSelector
 
 class ScaleDetector:
     """
@@ -51,8 +53,10 @@ class ScaleDetector:
             self.model = YOLO(str(model_path))
             self.conf_threshold = conf_threshold
             self.device = device
-            print(f"Loaded model: {model_path.name}")
-            print(f"Confidence threshold: {conf_threshold}")
+
+            self.primary_selector = PrimaryScaleSelector()
+            print(f"✅ Loaded model: {model_path.name}")
+            print(f"🎯 Confidence threshold: {conf_threshold}")
         except Exception as e:
             raise RuntimeError(f"Failed to load model: {e}")
     
@@ -108,6 +112,55 @@ class ScaleDetector:
             detections.append(detection)
         
         return detections
+
+    def detect_with_primary(self, image: Union[str, np.ndarray, Image.Image]) -> Dict:
+        """
+        Enhanced detection that identifies the primary (most relevant) scale.
+        
+        Args:
+            image: Either path to image file (str), numpy array (BGR format), or PIL Image
+            
+        Returns:
+            Dictionary containing:
+                - 'all_detections': List of all scale detections
+                - 'primary_scale': The primary scale detection (or None)
+                - 'num_scales': Total number of scales detected
+        
+        Example:
+            >>> result = detector.detect_with_primary('scales.jpg')
+            >>> print(f"Found {result['num_scales']} scales")
+            >>> if result['primary_scale']:
+            ...     print(f"Primary scale score: {result['primary_scale']['primary_score']:.2%}")
+        """
+        detections = self.detect(image)
+
+        # Convert image to numpy array if needed
+        if isinstance(image, str):
+            img = cv2.imread(image)
+        elif isinstance(image, Image.Image):
+            # Convert PIL Image to numpy array (RGB format)
+            img = np.array(image)
+            # Handle RGBA images (check shape after conversion to numpy)
+            if len(img.shape) == 3 and img.shape[-1] == 4:
+                img = cv2.cvtColor(img, cv2.COLOR_RGBA2RGB)
+            # Convert RGB to BGR for OpenCV
+            if len(img.shape) == 3:
+                img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+        else:
+            img = image
+
+        # Use PrimaryScaleSelector to identify the most relevant scale
+        primary_scale = self.primary_selector.resolve_primary_scale(
+            detections, 
+            img.shape,
+            image=img
+        )
+
+        return {
+            'all_detections': detections,
+            'primary_scale': primary_scale,
+            'num_scales': len(detections)
+        }
     
     def detect_and_visualize(
         self,

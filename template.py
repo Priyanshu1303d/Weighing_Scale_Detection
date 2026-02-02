@@ -16,9 +16,13 @@ list_of_files = [
     f"src/{project_name}/__init__.py",
     f"src/{project_name}/detector/__init__.py",
     f"src/{project_name}/detector/scale_detector.py",
+    f"src/{project_name}/detector/primary_selector.py",
     f"src/{project_name}/utils/__init__.py",
     f"src/{project_name}/utils/image_utils.py",
     f"src/{project_name}/utils/visualization.py",
+    f"src/{project_name}/detector/tests/__init__.py",
+    f"src/{project_name}/tests/__init__.py",
+    f"src/{project_name}/tests/test_primary_selector.py",
     
     "scripts/train.py",
     "scripts/inference.py",

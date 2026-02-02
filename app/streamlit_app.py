@@ -20,6 +20,7 @@ import json
 from pathlib import Path
 import sys
 from datetime import datetime
+from weighing_scale_detection.detector.scale_detector import ScaleDetector
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -466,47 +467,138 @@ with col_right:
             with st.spinner("🔄 Loading model..."):
                 model = load_model()
             
-            # Run detection
-            with st.spinner("🔍 Detecting scales..."):
-                annotated_img, detections = detect_scales(
-                    st.session_state.uploaded_image,
-                    model,
-                    conf_threshold
+            # NEW: Use enhanced detection with primary scale identification
+            with st.spinner("🔍 Detecting scales and identifying primary..."):
+                detector = ScaleDetector(
+                    "models/scale_detection_v1/weights/best.pt",
+                    conf_threshold=conf_threshold
                 )
+                
+                result = detector.detect_with_primary(st.session_state.uploaded_image)
+                
+                all_detections = result['all_detections']
+                primary_scale = result['primary_scale']
+                num_scales = result['num_scales']
             
             # Display results
-            if len(detections) > 0:
-                # Show annotated image in fixed container
+            if num_scales > 0:
+                # Visualize with primary highlighted
+                img_array = np.array(st.session_state.uploaded_image)
+                
+                # Handle RGBA images
+                if img_array.shape[-1] == 4:
+                    img_array = cv2.cvtColor(img_array, cv2.COLOR_RGBA2RGB)
+                
+                annotated = img_array.copy()
+                
+                # Draw all detections
+                for det in all_detections:
+                    x1, y1, x2, y2 = map(int, det['bbox'])
+                    
+                    # Primary scale: RED with thick border
+                    # Other scales: GREEN with normal border
+                    is_primary = det.get('is_primary', False)
+                    color = (255, 0, 0) if is_primary else (0, 255, 0)  # RGB format
+                    thickness = 4 if is_primary else 2
+                    
+                    cv2.rectangle(annotated, (x1, y1), (x2, y2), color, thickness)
+                    
+                    # Add label
+                    label = "PRIMARY" if is_primary else f"{det['confidence']:.1%}"
+                    label_bg_color = color
+                    
+                    (text_width, text_height), baseline = cv2.getTextSize(
+                        label, cv2.FONT_HERSHEY_SIMPLEX, 0.6, 2
+                    )
+                    
+                    cv2.rectangle(
+                        annotated,
+                        (x1, y1 - text_height - 10),
+                        (x1 + text_width + 10, y1),
+                        label_bg_color,
+                        cv2.FILLED
+                    )
+                    
+                    cv2.putText(
+                        annotated,
+                        label,
+                        (x1 + 5, y1 - 5),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        0.6,
+                        (255, 255, 255),  # White text
+                        2
+                    )
+                
+                # Show annotated image
                 results_container = st.container()
                 with results_container:
                     st.image(
-                        annotated_img,
-                        caption=f"✅ Found {len(detections)} scale display(s)",
+                        annotated,
+                        caption="🔴 RED = Primary Scale | 🟢 GREEN = Other Scales",
                         use_container_width=True
                     )
                 
-                st.success(f"🎉 Successfully detected {len(detections)} scale display(s)!")
+                # Show primary scale info
+                if primary_scale:
+                    st.success(f"✅ PRIMARY SCALE IDENTIFIED (Score: {primary_scale['primary_score']:.2%})")
+                    
+                    with st.expander("🧠 Why was this chosen?", expanded=True):
+                        explanation = detector.primary_selector.explain_decision(primary_scale)
+                        st.code(explanation, language=None)
+                    
+                    st.markdown(f"**Total scales detected:** {num_scales}")
+                    
+                    # Show detailed breakdown for primary scale
+                    st.markdown("#### � Primary Scale Metrics")
+                    
+                    metric_col1, metric_col2, metric_col3 = st.columns(3)
+                    
+                    with metric_col1:
+                        st.metric(
+                            "Confidence", 
+                            f"{primary_scale['confidence']:.2%}",
+                            delta="Detection Score"
+                        )
+                    
+                    with metric_col2:
+                        st.metric(
+                            "Primary Score",
+                            f"{primary_scale['primary_score']:.2%}",
+                            delta="Selection Score"
+                        )
+                    
+                    with metric_col3:
+                        st.metric(
+                            "Area",
+                            f"{primary_scale['area']:,} px²",
+                            delta="Bbox Size"
+                        )
+                    
+                    # Show all detections in expandable section
+                    if num_scales > 1:
+                        with st.expander(f"📋 All {num_scales} Detections", expanded=False):
+                            for idx, det in enumerate(all_detections, 1):
+                                is_primary = det.get('is_primary', False)
+                                prefix = "🔴 PRIMARY - " if is_primary else "🟢 "
+                                
+                                st.markdown(f"**{prefix}Detection #{idx}**")
+                                
+                                detail_col1, detail_col2 = st.columns(2)
+                                
+                                with detail_col1:
+                                    st.caption(f"Confidence: {det['confidence']:.2%}")
+                                    st.caption(f"Area: {det['area']:,} px²")
+                                
+                                with detail_col2:
+                                    if 'primary_score' in det:
+                                        st.caption(f"Primary Score: {det['primary_score']:.2%}")
+                                    bbox = det['bbox']
+                                    st.caption(f"Position: ({int(bbox[0])}, {int(bbox[1])})")
+                                
+                                st.markdown("---")
                 
-                # Detection details in scrollable area
-                st.markdown("#### 📋 Detection Details")
-                
-                # Create scrollable container for detections
-                for det in detections:
-                    with st.expander(
-                        f"🎯 Detection #{det['id']} - Confidence: {det['confidence']:.2%}",
-                        expanded=(det['id'] == 1)  # Expand first detection
-                    ):
-                        detail_col1, detail_col2 = st.columns(2)
-                        
-                        with detail_col1:
-                            st.metric("Confidence Score", f"{det['confidence']:.2%}")
-                            st.metric("Detection Class", det['class_name'])
-                        
-                        with detail_col2:
-                            st.metric("Bounding Box Area", f"{det['box_area']:,} px²")
-                            bbox = det['bbox']
-                            st.caption(f"📍 Top-Left: ({int(bbox[0])}, {int(bbox[1])})")
-                            st.caption(f"📍 Bottom-Right: ({int(bbox[2])}, {int(bbox[3])})")
+                else:
+                    st.warning("⚠️ Scales detected but could not determine primary scale")
                 
             else:
                 # No detections
@@ -538,7 +630,7 @@ with col_right:
 
 # ==================== STATISTICS & DOWNLOAD SECTION ====================
 
-if st.session_state.uploaded_image is not None and 'detections' in locals() and len(detections) > 0:
+if st.session_state.uploaded_image is not None and 'all_detections' in locals() and len(all_detections) > 0:
     
     st.markdown("---")
     
@@ -549,12 +641,12 @@ if st.session_state.uploaded_image is not None and 'detections' in locals() and 
     with stat_col1:
         st.metric(
             "Total Detections",
-            len(detections),
+            num_scales,
             delta="Scales Found"
         )
     
     with stat_col2:
-        avg_conf = np.mean([d['confidence'] for d in detections])
+        avg_conf = np.mean([d['confidence'] for d in all_detections])
         st.metric(
             "Average Confidence",
             f"{avg_conf:.1%}",
@@ -562,7 +654,7 @@ if st.session_state.uploaded_image is not None and 'detections' in locals() and 
         )
     
     with stat_col3:
-        max_conf = max([d['confidence'] for d in detections])
+        max_conf = max([d['confidence'] for d in all_detections])
         st.metric(
             "Highest Confidence",
             f"{max_conf:.1%}",
@@ -570,7 +662,7 @@ if st.session_state.uploaded_image is not None and 'detections' in locals() and 
         )
     
     with stat_col4:
-        total_area = sum([d['box_area'] for d in detections])
+        total_area = sum([d['area'] for d in all_detections])
         st.metric(
             "Total Coverage",
             f"{total_area:,} px²",
@@ -584,7 +676,7 @@ if st.session_state.uploaded_image is not None and 'detections' in locals() and 
     download_col1, download_col2 = st.columns(2)
     
     with download_col1:
-        img_bytes = image_to_bytes(annotated_img)
+        img_bytes = image_to_bytes(annotated)
         
         st.download_button(
             label="📥 Download Annotated Image",
@@ -601,9 +693,11 @@ if st.session_state.uploaded_image is not None and 'detections' in locals() and 
                 'source_image': st.session_state.image_source,
                 'model': 'YOLOv8n',
                 'confidence_threshold': conf_threshold,
-                'total_detections': len(detections)
+                'total_detections': num_scales,
+                'primary_scale_detected': primary_scale is not None
             },
-            'detections': detections
+            'all_detections': all_detections,
+            'primary_scale': primary_scale
         }
         
         json_data = json.dumps(detection_data, indent=2)

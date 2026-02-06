@@ -77,6 +77,24 @@ The project includes **training, evaluation, batch inference, visualization, and
 
 ---
 
+## 📸 Screenshots
+
+### Streamlit Web Application
+
+**Main Interface - Detection Results**
+![Detection Interface](assets/1.png)
+*Upload images and get real-time detection with adjustable confidence threshold. Primary scale highlighted in red.*
+
+**Primary Scale Detection with Metrics**
+![Primary Scale Detection](assets/2.png)
+*Advanced primary scale identification with detailed explanation and scoring breakdown.*
+
+**Visual Results Comparison**
+![Before & After Comparison](assets/3.png)
+*Side-by-side comparison showing original image and detected scale display with bounding box.*
+
+---
+
 ## 📦 Installation
 
 ### Prerequisites

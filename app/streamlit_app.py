@@ -437,7 +437,7 @@ with col_left:
         
         # Image info
         st.markdown(f"""
-        <div style='background-color: #f8f9fa; padding: 0.8rem; border-radius: 8px; margin-top: 0.5rem;'>
+        <div style='background-color: #050000; padding: 0.8rem; border-radius: 8px; margin-top: 0.5rem;'>
             <strong>Image Info:</strong><br>
             📐 Size: {image.size[0]} × {image.size[1]} pixels<br>
             📊 Format: {image.format}<br>

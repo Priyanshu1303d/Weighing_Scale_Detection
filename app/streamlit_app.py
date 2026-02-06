@@ -317,6 +317,16 @@ with st.sidebar:
     
     st.markdown("---")
     
+    # OCR Settings
+    st.markdown("### 🔤 OCR Settings")
+    enable_ocr = st.checkbox(
+        "Enable Weight Extraction",
+        value=True,
+        help="Extract weight values from detected scale displays using OCR"
+    )
+    
+    st.markdown("---")
+    
     # Model information
     st.markdown("## 📊 Model Performance")
     
@@ -471,10 +481,15 @@ with col_right:
             with st.spinner("🔍 Detecting scales and identifying primary..."):
                 detector = ScaleDetector(
                     "models/scale_detection_v1/weights/best.pt",
-                    conf_threshold=conf_threshold
+                    conf_threshold=conf_threshold,
+                    enable_ocr=enable_ocr
                 )
                 
-                result = detector.detect_with_primary(st.session_state.uploaded_image)
+                # Use OCR-enabled detection if enabled, otherwise use standard detection
+                if enable_ocr:
+                    result = detector.detect_with_weight(st.session_state.uploaded_image)
+                else:
+                    result = detector.detect_with_primary(st.session_state.uploaded_image)
                 
                 all_detections = result['all_detections']
                 primary_scale = result['primary_scale']
@@ -573,6 +588,41 @@ with col_right:
                             f"{primary_scale['area']:,} px²",
                             delta="Bbox Size"
                         )
+                    
+                    # OCR Weight Reading Section
+                    if enable_ocr and 'ocr_result' in primary_scale:
+                        st.markdown("---")
+                        st.markdown("### 📖 Weight Reading")
+                        
+                        ocr_data = primary_scale['ocr_result']
+                        
+                        ocr_col1, ocr_col2, ocr_col3 = st.columns(3)
+                        
+                        with ocr_col1:
+                            if ocr_data['is_valid']:
+                                st.metric(
+                                    "Weight",
+                                    f"{ocr_data['weight_value']:.2f} {ocr_data['unit']}",
+                                    delta="✓ Valid"
+                                )
+                            else:
+                                st.metric(
+                                    "Weight",
+                                    "N/A",
+                                    delta="✗ Invalid"
+                                )
+                        
+                        with ocr_col2:
+                            st.metric(
+                                "OCR Confidence",
+                                f"{ocr_data['confidence']:.1%}"
+                            )
+                        
+                        with ocr_col3:
+                            st.metric(
+                                "Raw Text",
+                                ocr_data['raw_text'] if ocr_data['raw_text'] else "N/A"
+                            )
                     
                     # Show all detections in expandable section
                     if num_scales > 1:

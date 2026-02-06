@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import List, Dict, Union, Tuple, Optional
 from PIL import Image
 from weighing_scale_detection.detector.primary_selector import PrimaryScaleSelector
+from weighing_scale_detection.ocr.ocr_service import WeightOCRService
 
 class ScaleDetector:
     """
@@ -30,7 +31,8 @@ class ScaleDetector:
         self, 
         model_path: str, 
         conf_threshold: float = 0.25,
-        device: str = 'cpu'
+        device: str = 'cpu',
+        enable_ocr: bool = True
     ):
         """
         Initialize the scale detector.
@@ -55,6 +57,10 @@ class ScaleDetector:
             self.device = device
 
             self.primary_selector = PrimaryScaleSelector()
+            self.enable_ocr = enable_ocr
+            if enable_ocr:
+                self.ocr_service = WeightOCRService(gpu=(device != 'cpu'))
+
             print(f"✅ Loaded model: {model_path.name}")
             print(f"🎯 Confidence threshold: {conf_threshold}")
         except Exception as e:
@@ -161,6 +167,46 @@ class ScaleDetector:
             'primary_scale': primary_scale,
             'num_scales': len(detections)
         }
+
+    def detect_with_weight(self, image: Union[str, np.ndarray, Image.Image]) -> Dict:
+        """
+        Detect scale and extract weight value in one call.
+        
+        Args:
+            image: Input image (file path, NumPy array, or PIL Image)
+        
+        Returns:
+            Detection result dict with OCR results included in primary_scale
+        """
+        # Get primary scale
+        result = self.detect_with_primary(image)
+        primary_scale = result['primary_scale']
+        
+        # Extract weight if OCR enabled
+        if self.enable_ocr and primary_scale:
+            # Convert image to NumPy array (BGR) for OCR
+            if isinstance(image, str):
+                img = cv2.imread(image)
+            elif isinstance(image, Image.Image):
+                # Convert PIL Image to NumPy array
+                img_array = np.array(image)
+                # Handle RGBA images
+                if img_array.shape[-1] == 4:
+                    img_array = cv2.cvtColor(img_array, cv2.COLOR_RGBA2RGB)
+                # Convert RGB to BGR for OpenCV
+                img = cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR)
+            else:
+                # Already a NumPy array
+                img = image
+            
+            ocr_result = self.ocr_service.extract_weight(
+                img,
+                primary_scale['bbox']
+            )
+            
+            primary_scale['ocr_result'] = ocr_result
+        
+        return result
     
     def detect_and_visualize(
         self,

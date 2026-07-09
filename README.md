@@ -102,7 +102,7 @@ The project includes **training, evaluation, batch inference, visualization, and
 ### Setup
 
 ```bash
-git clone https://github.com/Priyanshu1303d/weighing-scale-detection.git
+git clone https://github.com/Priyanshu1303d/weighing_scale_detection.git
 cd weighing-scale-detection
 ````
 

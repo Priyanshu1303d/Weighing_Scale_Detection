@@ -103,7 +103,7 @@ The project includes **training, evaluation, batch inference, visualization, and
 
 ```bash
 git clone https://github.com/Priyanshu1303d/weighing_scale_detection.git
-cd weighing-scale-detection
+cd weighing_scale_detection
 ````
 
 Create virtual environment:
@@ -211,7 +211,7 @@ python scripts/quick_test.py
 ## 📁 Project Structure
 
 ```
-weighing-scale-detection/
+weighing_scale_detection/
 │
 ├── app/                          # Streamlit web application
 │   ├── streamlit_app.py

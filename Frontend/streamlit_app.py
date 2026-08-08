@@ -20,10 +20,10 @@ import json
 from pathlib import Path
 import sys
 from datetime import datetime
-from weighing_scale_detection.detector.scale_detector import ScaleDetector
 
-# Add parent directory to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "Backend" / "src"))
+
+from weighing_scale_detection.detector.scale_detector import ScaleDetector
 
 from ultralytics import YOLO
 
@@ -195,14 +195,14 @@ def load_model():
     
     if not Path(model_path).exists():
         st.error(f"❌ Model not found at {model_path}")
-        st.info("💡 Make sure you've trained the model first: `python scripts/train.py`")
+        st.info("💡 Make sure you've trained the model first: `python Backend/scripts/train.py`")
         st.stop()
     
     return YOLO(model_path)
 
 def load_example_image(example_num):
     """Load example image"""
-    example_path = Path(f"app/examples/example{example_num}.jpg")
+    example_path = Path(f"Frontend/examples/example{example_num}.jpg")
     
     if example_path.exists():
         return Image.open(example_path)
@@ -364,10 +364,10 @@ with st.sidebar:
     
     # Author info
     st.markdown("""
-    <div style='text-align: center; padding: 1rem; background-color: white; border-radius: 8px;'>
-        <p style='margin: 0; font-weight: 600;'>Created by</p>
-        <p style='margin: 0; color: #667eea;'>Priyanshu Kumar Singh</p>
-        <p style='margin: 0; font-size: 0.8rem;'>NoScrubs Internship 2025</p>
+    <div style='text-align: center; padding: 1rem; background-color: rgba(15, 23, 42, 0.85); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08);'>
+        <p style='margin: 0; font-weight: 600; color: #f8fafc;'>Created by</p>
+        <p style='margin: 0; color: #93c5fd;'>Priyanshu Kumar Singh</p>
+        <p style='margin: 0; font-size: 0.8rem; color: #cbd5e1;'>NoScrubs Internship 2025</p>
     </div>
     """, unsafe_allow_html=True)
 

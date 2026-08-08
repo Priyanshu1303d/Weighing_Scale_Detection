@@ -28,7 +28,7 @@ list_of_files = [
     "scripts/inference.py",
     "scripts/evaluate.py",
     "scripts/quick_test.py",
-    "scripts/create_comparison.py"
+    "scripts/create_comparison.py",
     
     "notebooks/01_data_exploration.ipynb",
     "notebooks/02_model_training.ipynb",
@@ -43,10 +43,10 @@ list_of_files = [
     "results/metrics/.gitkeep",
     "results/visualizations/.gitkeep",
     
-    "app/streamlit_app.py",
-    "app/pages/1_Model_Metrics.py",
-    "app/pages/2_Predictions.py",
-    "app/examples/.gitkeep",
+    "Frontend/streamlit_app.py",
+    "Frontend/pages/1_Model_Metrics.py",
+    "Frontend/pages/2_Visual_Results.py",
+    "Frontend/examples/.gitkeep",
     
     "docs/TRAINING_REPORT.md",
     "docs/API_DOCS.md",

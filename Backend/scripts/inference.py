@@ -196,16 +196,16 @@ def main():
         epilog="""
 Examples:
   # Single image
-  python scripts/inference.py --input test.jpg
+    python Backend/scripts/inference.py --input test.jpg
   
   # Directory of images
-  python scripts/inference.py --input data/test/images/ --output results/detections/
+    python Backend/scripts/inference.py --input data/test/images/ --output results/detections/
   
   # Custom confidence threshold
-  python scripts/inference.py --input test.jpg --conf 0.5
+    python Backend/scripts/inference.py --input test.jpg --conf 0.5
   
   # Save results as JSON
-  python scripts/inference.py --input images/ --save-json
+    python Backend/scripts/inference.py --input images/ --save-json
         """
     )
     

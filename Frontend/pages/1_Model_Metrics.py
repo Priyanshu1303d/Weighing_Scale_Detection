@@ -117,4 +117,4 @@ if metrics_file.exists():
 
 else:
     st.error("❌ Metrics file not found. Please run evaluation first!")
-    st.code("python scripts/evaluate.py")
+    st.code("python Backend/scripts/evaluate.py")

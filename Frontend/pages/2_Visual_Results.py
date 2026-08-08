@@ -19,7 +19,7 @@ if comparison_path.exists():
     img = Image.open(comparison_path)
     st.image(img, caption="Original vs Detected - Comparison Grid", use_container_width=True)
 else:
-    st.warning("Comparison grid not found. Run: `python scripts/create_comparison.py`")
+    st.warning("Comparison grid not found. Run: `python Backend/scripts/create_comparison.py`")
 
 # Show individual results
 st.markdown("## 🎯 Sample Detections")
@@ -39,4 +39,4 @@ if results_dir.exists():
     else:
         st.info("No sample images found")
 else:
-    st.warning("Results directory not found. Run: `python scripts/quick_test.py`")
+    st.warning("Results directory not found. Run: `python Backend/scripts/quick_test.py`")

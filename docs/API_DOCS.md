@@ -7,8 +7,8 @@
 ## Installation
 
 ```bash
-git clone https://github.com/Priyanshu1303d/weighing-scale-detection.git
-cd weighing-scale-detection
+git clone https://github.com/Priyanshu1303d/weighing_scale_detection.git
+cd weighing_scale_detection
 python -m venv .venv
 .venv\Scripts\activate  # Windows | source .venv/bin/activate (Linux/macOS)
 pip install -r requirements.txt
@@ -72,13 +72,13 @@ results = detector.detect_batch(
 
 ```bash
 # Single image
-python scripts/inference.py --input test.jpg
+python Backend/scripts/inference.py --input test.jpg
 
 # Batch directory
-python scripts/inference.py --input data/images --save-json
+python Backend/scripts/inference.py --input data/labeled/test/images --save-json
 
 # Custom options
-python scripts/inference.py --input data/images --conf 0.5 --save-json --save-txt
+python Backend/scripts/inference.py --input data/labeled/test/images --conf 0.5 --save-json --save-txt
 ```
 
 **Options:**
@@ -91,14 +91,14 @@ python scripts/inference.py --input data/images --conf 0.5 --save-json --save-tx
 ### Training
 
 ```bash
-python scripts/train.py
+python Backend/scripts/train.py
 # Output: models/scale_detection_v1/weights/best.pt
 ```
 
 ### Evaluation
 
 ```bash
-python scripts/evaluate.py
+python Backend/scripts/evaluate.py
 # Output: results/metrics/evaluation_results.json
 ```
 
@@ -107,7 +107,7 @@ python scripts/evaluate.py
 ## Web Application
 
 ```bash
-streamlit run app/streamlit_app.py
+streamlit run Frontend/streamlit_app.py
 # Open: http://localhost:8501
 ```
 
@@ -215,5 +215,5 @@ detector = ScaleDetector(conf_threshold=0.4)
 ---
 
 
-**GitHub:** [Priyanshu1303d/weighing-scale-detection](https://github.com/Priyanshu1303d/weighing-scale-detection)  
+**GitHub:** [Priyanshu1303d/weighing_scale_detection](https://github.com/Priyanshu1303d/weighing_scale_detection)  
 

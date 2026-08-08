@@ -22,8 +22,11 @@ setup(
     project_urls={
         "Bug Tracker": f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}/issues"
     },
-    package_dir={"": "src"},
-    packages=find_packages(where="src"),
+    package_dir={"": "Backend/src"},
+    packages=find_packages(
+        where="Backend/src",
+        exclude=["weighing_scale_detection.tests", "weighing_scale_detection.tests.*"],
+    ),
     python_requires=">=3.8",
     install_requires=[
         "ultralytics>=8.3.0",

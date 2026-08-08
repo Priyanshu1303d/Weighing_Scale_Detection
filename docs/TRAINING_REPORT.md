@@ -143,8 +143,8 @@ yolo export model=models/scale_detection_v1/weights/best.pt format=tflite
 
 ```bash
 pip install ultralytics opencv-python numpy
-python scripts/train.py
-python scripts/evaluate.py
+python Backend/scripts/train.py
+python Backend/scripts/evaluate.py
 ```
 
 **Output:** `models/scale_detection_v1/weights/best.pt`
@@ -161,4 +161,4 @@ YOLOv8n achieves exceptional performance for scale detection with 99.5% mAP, 100
 
 **References:**
 - [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)
-- [Roboflow Dataset](https://universe.roboflow.com/playfieldvision/weighing-scale-detection/dataset/1)
+- [Roboflow Dataset](https://universe.roboflow.com/playfieldvision/weighing_scale_detection/dataset/1)

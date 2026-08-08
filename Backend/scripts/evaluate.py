@@ -3,11 +3,16 @@ Comprehensive model evaluation script
 Calculates detailed metrics on test set and generates evaluation report
 """
 
+import sys
 from ultralytics import YOLO
 import json
 from pathlib import Path
 from datetime import datetime
-from src.weighing_scale_detection.detector.primary_selector import PrimaryScaleSelector
+import cv2
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+from weighing_scale_detection.detector.primary_selector import PrimaryScaleSelector
 
 def evaluate_model():
     """
@@ -62,7 +67,7 @@ def evaluate_model():
             })
         
         if len(detections) > 0:
-            primary = selector.resolve_primary_scale(detections, img.shape, img)
+            primary = primary_selector.resolve_primary_scale(detections, img.shape, img)
             # In real scenario, you'd compare against ground truth
             # For now, we assume highest confidence = correct
             correct_primary += 1

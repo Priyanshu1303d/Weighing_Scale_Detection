@@ -223,10 +223,11 @@ build/
 .ipynb_checkpoints
 *.ipynb_checkpoints/
 
-# Model weights (too large for git)
-models/*.pt
-models/*.pth
-!models/.gitkeep
+# Model weights
+*.pt
+*.pth
+*.onnx
+*.engine
 
 # Data (upload separately or use DVC)
 data/raw/*
@@ -238,8 +239,6 @@ results/predictions/*
 results/visualizations/*
 !results/**/.gitkeep
 
-# Environment
-.env
 
 # IDE
 .vscode/
@@ -251,3 +250,40 @@ results/visualizations/*
 .DS_Store
 Thumbs.db
 yolov8n.pt
+
+# ==============================
+# Environment
+# ==============================
+.env
+.env.*
+
+# ==============================
+# Python caches
+# ==============================
+__pycache__/
+.pytest_cache/
+.benchmarks/
+
+# ==============================
+# Virtual environment
+# ==============================
+.venv/
+
+# ==============================
+# Build/package artifacts
+# ==============================
+*.egg-info/
+build/
+dist/
+
+# ==============================
+# IDE
+# ==============================
+.vscode/
+.idea/
+
+# ==============================
+# OS
+# ==============================
+.DS_Store
+Thumbs.db

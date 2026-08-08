@@ -11,7 +11,7 @@ from ultralytics import YOLO
 from pathlib import Path
 from typing import List, Dict, Union, Tuple, Optional
 from PIL import Image
-from weighing_scale_detection.detector.primary_selector import PrimaryScaleSelector
+from .primary_selector import PrimaryScaleSelector
 
 class ScaleDetector:
     """

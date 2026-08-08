@@ -130,6 +130,7 @@ Install dependencies:
 
 ```bash
 pip install -r requirements.txt
+pip install -e .
 ```
 
 ---
@@ -139,7 +140,7 @@ pip install -r requirements.txt
 ### 1️⃣ Run Streamlit Web App
 
 ```bash
-streamlit run app/streamlit_app.py
+streamlit run Frontend/streamlit_app.py
 ```
 
 Features:
@@ -156,19 +157,19 @@ Features:
 **Single Image**
 
 ```bash
-python scripts/inference.py --input test.jpg
+python Backend/scripts/inference.py --input test.jpg
 ```
 
 **Directory of Images**
 
 ```bash
-python scripts/inference.py --input data/labeled/test/images --save-json
+python Backend/scripts/inference.py --input data/labeled/test/images --save-json
 ```
 
 **Custom Confidence Threshold**
 
 ```bash
-python scripts/inference.py --input test.jpg --conf 0.5
+python Backend/scripts/inference.py --input test.jpg --conf 0.5
 ```
 
 ---
@@ -176,7 +177,7 @@ python scripts/inference.py --input test.jpg --conf 0.5
 ### 3️⃣ Train Model
 
 ```bash
-python scripts/train.py
+python Backend/scripts/train.py
 ```
 
 Outputs:
@@ -189,7 +190,7 @@ Outputs:
 ### 4️⃣ Evaluate Model
 
 ```bash
-python scripts/evaluate.py
+python Backend/scripts/evaluate.py
 ```
 
 Generates:
@@ -203,7 +204,7 @@ Generates:
 ### 5️⃣ Quick Sanity Test
 
 ```bash
-python scripts/quick_test.py
+python Backend/scripts/quick_test.py
 ```
 
 ---
@@ -213,20 +214,20 @@ python scripts/quick_test.py
 ```
 weighing_scale_detection/
 │
-├── app/                          # Streamlit web application
+├── Frontend/                     # Streamlit web application
 │   ├── streamlit_app.py
 │   └── pages/
 │       ├── 1_Model_Metrics.py
 │       └── 2_Visual_Results.py
 │
-├── src/weighing_scale_detection/  # Core detection package
+├── Backend/src/weighing_scale_detection/  # Core detection package
 │   ├── detector/
 │   │   └── scale_detector.py
 │   └── utils/
 │       ├── image_utils.py
 │       └── visualization.py
 │
-├── scripts/                      # Training & inference scripts
+├── Backend/scripts/               # Training & inference scripts
 │   ├── train.py
 │   ├── evaluate.py
 │   ├── inference.py

@@ -182,7 +182,7 @@ python Backend/scripts/train.py
 
 Outputs:
 
-* Trained weights → `models/scale_detection_v1/weights/best.pt`
+* Trained weights → `Backend/models/scale_detection_v1/weights/best.pt`
 * Training plots & logs
 
 ---
@@ -220,14 +220,16 @@ weighing_scale_detection/
 │       ├── 1_Model_Metrics.py
 │       └── 2_Visual_Results.py
 │
-├── Backend/src/weighing_scale_detection/  # Core detection package
-│   ├── detector/
-│   │   └── scale_detector.py
-│   └── utils/
-│       ├── image_utils.py
-│       └── visualization.py
-│
-├── Backend/scripts/               # Training & inference scripts
+├── Backend
+|   └── src/weighing_scale_detection/  # Core detection package
+│         ├── detector/
+│             └── scale_detector.py
+│         ├── utils/
+│             ├── image_utils.py
+│             └── visualization.py
+│         └── tests/
+│             └── test_primary_selector.py
+├──  scripts/               # Training & inference scripts
 │   ├── train.py
 │   ├── evaluate.py
 │   ├── inference.py

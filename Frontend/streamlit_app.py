@@ -25,8 +25,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "Backend" / "src"))
 
 from weighing_scale_detection.detector.scale_detector import ScaleDetector
 
-from ultralytics import YOLO
-
 # ==================== PAGE CONFIGURATION ====================
 st.set_page_config(
     page_title="Scale Display Detector",
@@ -189,16 +187,16 @@ st.markdown("""
 # ==================== HELPER FUNCTIONS ====================
 
 @st.cache_resource
-def load_model():
-    """Load YOLOv8 model (cached for performance)"""
+def load_detector():
+    """Load ScaleDetector once per session to avoid repeated YOLO initialization."""
     model_path = "Backend/models/best.pt"
-    
+
     if not Path(model_path).exists():
         st.error(f"❌ Model not found at {model_path}")
         st.info("💡 Make sure you've trained the model first: `python Backend/scripts/train.py`")
         st.stop()
-    
-    return YOLO(model_path)
+
+    return ScaleDetector(model_path, conf_threshold=0.25, device='cpu')
 
 def load_example_image(example_num):
     """Load example image"""
@@ -463,18 +461,14 @@ with col_right:
     
     if st.session_state.uploaded_image is not None:
         try:
-            # Load model
-            with st.spinner("🔄 Loading model..."):
-                model = load_model()
-            
-            # NEW: Use enhanced detection with primary scale identification
+            # Use enhanced detection with primary scale identification
             with st.spinner("🔍 Detecting scales and identifying primary..."):
-                detector = ScaleDetector(
-                    "Backend/models/best.pt",
+                detector = load_detector()
+                
+                result = detector.detect_with_primary(
+                    st.session_state.uploaded_image,
                     conf_threshold=conf_threshold
                 )
-                
-                result = detector.detect_with_primary(st.session_state.uploaded_image)
                 
                 all_detections = result['all_detections']
                 primary_scale = result['primary_scale']

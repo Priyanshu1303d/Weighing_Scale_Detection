@@ -113,12 +113,17 @@ class ScaleDetector:
         
         return detections
 
-    def detect_with_primary(self, image: Union[str, np.ndarray, Image.Image]) -> Dict:
+    def detect_with_primary(
+        self,
+        image: Union[str, np.ndarray, Image.Image],
+        conf_threshold: Optional[float] = None
+    ) -> Dict:
         """
         Enhanced detection that identifies the primary (most relevant) scale.
         
         Args:
             image: Either path to image file (str), numpy array (BGR format), or PIL Image
+            conf_threshold: Optional confidence override for this call
             
         Returns:
             Dictionary containing:
@@ -132,7 +137,7 @@ class ScaleDetector:
             >>> if result['primary_scale']:
             ...     print(f"Primary scale score: {result['primary_scale']['primary_score']:.2%}")
         """
-        detections = self.detect(image)
+        detections = self.detect(image, conf_threshold=conf_threshold)
 
         # Convert image to numpy array if needed
         if isinstance(image, str):

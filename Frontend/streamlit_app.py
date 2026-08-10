@@ -191,7 +191,7 @@ st.markdown("""
 @st.cache_resource
 def load_model():
     """Load YOLOv8 model (cached for performance)"""
-    model_path = "models/scale_detection_v1/weights/best.pt"
+    model_path = "Backend/models/best.pt"
     
     if not Path(model_path).exists():
         st.error(f"❌ Model not found at {model_path}")
@@ -470,7 +470,7 @@ with col_right:
             # NEW: Use enhanced detection with primary scale identification
             with st.spinner("🔍 Detecting scales and identifying primary..."):
                 detector = ScaleDetector(
-                    "models/scale_detection_v1/weights/best.pt",
+                    "Backend/models/best.pt",
                     conf_threshold=conf_threshold
                 )
                 

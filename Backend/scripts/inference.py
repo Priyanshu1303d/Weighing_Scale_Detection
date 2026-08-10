@@ -219,8 +219,8 @@ Examples:
     parser.add_argument(
         '--model', '-m',
         type=str,
-        default='models/scale_detection_v1/weights/best.pt',
-        help='Path to trained model (default: models/scale_detection_v1/weights/best.pt)'
+        default='Backend/models/best.pt',
+        help='Path to trained model (default: Backend/models/best.pt)'
     )
     
     parser.add_argument(

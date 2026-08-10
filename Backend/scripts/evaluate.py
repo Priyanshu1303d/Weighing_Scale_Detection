@@ -19,7 +19,7 @@ def evaluate_model():
     Run comprehensive evaluation on test set
     """
     
-    model_path = "models/scale_detection_v1/weights/best.pt"
+    model_path = "Backend/models/best.pt"
     data_yaml = "data/labeled/data.yaml"
     results_dir = Path("results/metrics")
     

@@ -12,7 +12,7 @@ def create_comparison_grid(num_samples=6):
     """Create side-by-side comparison grid"""
     
 
-    model_path = "models/scale_detection_v1/weights/best.pt"
+    model_path = "Backend/models/best.pt"
     test_dir = Path("data/labeled/test/images")
     output_path = "results/comparison_grid.jpg"
     

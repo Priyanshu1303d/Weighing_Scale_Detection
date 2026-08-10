@@ -1,14 +1,45 @@
+# Git
 .git
+.gitignore
 .github
-.venv
-__pycache__
-*.pyc
 
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.benchmarks/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+.env.*
+
+# Development
+.vscode/
+.idea/
+
+# Training data
 data/
+
+# Notebooks
 notebooks/
+
+# Training artifacts
+models/
+
+# Old/generated results
+results/
+
+# Local model files
+yolov8n.pt
+
+# Documentation that isn't needed at runtime
 docs/
 
-results/
-experiments/
-
-backend/scripts/
+# Project scaffolding
+template.py

@@ -26,7 +26,7 @@ from weighing_scale_detection.detector.scale_detector import ScaleDetector
 
 # Initialize
 detector = ScaleDetector(
-    model_path="models/scale_detection_v1/weights/best.pt",
+    model_path="Backend/models/best.pt",
     conf_threshold=0.25,
     device='cpu'  # 'cuda' for GPU
 )
@@ -92,7 +92,7 @@ python Backend/scripts/inference.py --input data/labeled/test/images --conf 0.5 
 
 ```bash
 python Backend/scripts/train.py
-# Output: models/scale_detection_v1/weights/best.pt
+# Output: Backend/models/best.pt
 ```
 
 ### Evaluation

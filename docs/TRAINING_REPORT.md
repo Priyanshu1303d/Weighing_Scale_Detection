@@ -123,13 +123,13 @@ Patience: 15 epochs
 
 ```bash
 # ONNX (cross-platform)
-yolo export model=models/scale_detection_v1/weights/best.pt format=onnx
+yolo export model=Backend/models/best.pt format=onnx
 
 # TensorRT (NVIDIA)
-yolo export model=models/scale_detection_v1/weights/best.pt format=engine
+yolo export model=Backend/models/best.pt format=engine
 
 # TFLite (mobile)
-yolo export model=models/scale_detection_v1/weights/best.pt format=tflite
+yolo export model=Backend/models/best.pt format=tflite
 ```
 
 ### Options
@@ -147,7 +147,7 @@ python Backend/scripts/train.py
 python Backend/scripts/evaluate.py
 ```
 
-**Output:** `models/scale_detection_v1/weights/best.pt`
+**Output:** `Backend/models/best.pt`
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "timestamp": "2026-01-31 19:31:02",
-  "model": "models/scale_detection_v1/weights/best.pt",
+  "model": "Backend/models/best.pt",
   "confidence_threshold": 0.25,
   "total_images": 32,
   "total_detections": 36,

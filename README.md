@@ -182,7 +182,7 @@ python Backend/scripts/train.py
 
 Outputs:
 
-* Trained weights → `Backend/models/scale_detection_v1/weights/best.pt`
+* Trained weights → `Backend/models/best.pt`
 * Training plots & logs
 
 ---

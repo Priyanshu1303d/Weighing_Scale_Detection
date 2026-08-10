@@ -10,7 +10,7 @@ from pathlib import Path
 def quick_test():
     """Test trained model on a few images"""
     
-    model_path = "models/scale_detection_v1/weights/best.pt"
+    model_path = "Backend/models/best.pt"
     test_images_dir = "data/labeled/test/images"
     output_dir = "results/quick_test"
     

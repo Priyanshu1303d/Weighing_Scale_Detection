@@ -4,6 +4,9 @@
 An AI-powered computer vision system that detects **weighing scale digital displays** from images using a fine-tuned **YOLOv8** model.  
 The project includes **training, evaluation, batch inference, visualization, and a production-ready Streamlit web app**.
 
+
+Live Demo --> https://weighing-scale-detection25.streamlit.app/
+
 ---
 
 ### Streamlit Web Application

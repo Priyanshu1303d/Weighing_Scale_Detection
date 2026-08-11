@@ -721,8 +721,8 @@ st.markdown("""
         Priyanshu Kumar Singh</a>
     </p>
     <p style='margin: 0.5rem 0; font-size: 0.85rem; color: #999;'>
-        🔗 <a href='https://github.com/Priyanshu1303d/weighing-scale-detection' target='_blank' style='color: #999;'>View on GitHub</a> | 
-        📧 <a href='mailto:priyanshu1303d@gmail.com' style='color: #999;'>Contact</a>
+        🔗 <a href='https://github.com/Priyanshu1303d/weighing_scale_detection' target='_blank' style='color: #999;'>View on GitHub</a> | 
+        📧 <a href='mailto:priyanshu13.dev@gmail.com' style='color: #999;'>Contact</a>
     </p>
 </div>
 """, unsafe_allow_html=True)

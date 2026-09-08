@@ -30,7 +30,7 @@ setup(
     python_requires=">=3.8",
     install_requires=[
         "ultralytics>=8.3.0",
-        "opencv-python>=4.8.0",
+        "opencv-python-headless>=4.8.0",
         "numpy>=1.24.0",
         "plotly>=5.20.0",
     ],

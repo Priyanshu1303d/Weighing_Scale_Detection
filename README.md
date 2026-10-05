@@ -1,7 +1,7 @@
 # ⚖️ Weighing Scale Detection  
 **End-to-End Weighing Scale Display Detection using YOLOv8**
 
-An AI-powered computer vision system that detects **weighing scale digital displays** from images using a fine-tuned **YOLOv8** model.  
+An computer vision system that detects **weighing scale digital displays** from images using a fine-tuned **YOLOv8** model.  
 The project includes **training, evaluation, batch inference, visualization, and a production-ready Streamlit web app**.
 
 
